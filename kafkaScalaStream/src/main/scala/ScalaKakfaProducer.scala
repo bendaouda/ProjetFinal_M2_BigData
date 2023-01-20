@@ -16,7 +16,7 @@ object ScalaKakfaProducer {
     val producer: KafkaProducer[String, String] = new KafkaProducer[String, String](config)
 
     // Enter your file name with path here
-    val fileName = "C:\\Users\\soule\\OneDrive\\Documents\\M2 BI\\Veille Technologique - Big Data\\Projet Final BI\\ProjetFinal_M2_BigData\\datasets\\pays.csv"
+    val fileName = "/home/bend/Documents/M2_BI/BigData/ProjetFinal/ProjetFinal_M2_BigData/datasets/pays.csv"
 
     // Enter your Kafka input topic name
     val topicName = "pays_topic_bis"

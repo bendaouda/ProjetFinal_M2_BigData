@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="root [file:/C:/Users/soule/OneDrive/Documents/M2%20BI/kafkaScalaStream/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="root [file:/home/bend/Documents/M2_BI/BigData/ProjetFinal/ProjetFinal_M2_BigData/kafkaScalaStream/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../target/scala-2.13/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.13/test-classes" />
@@ -211,6 +211,8 @@
         <SOURCES>
           <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/4.1.74.Final/netty-transport-native-kqueue-4.1.74.Final-sources.jar!/" />
           <root url="jar://$USER_HOME$/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/apache/hive/hive-exec/2.3.9/hive-exec-2.3.9-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/4.1.74.Final/netty-transport-native-kqueue-4.1.74.Final-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/hive/hive-exec/2.3.9/hive-exec-2.3.9-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

@@ -14,7 +14,7 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.{SparkContext,SparkConf}
 import org.apache.spark.sql
-
+import org.apache.spark.sql.{SaveMode, SparkSession}
 object ConsumerPlayground extends App {
 
   // HDFS configuration
@@ -41,61 +41,71 @@ object ConsumerPlayground extends App {
   val spark_conf = new SparkConf().setAppName("Read-CSV").setMaster("local[*]")
   val sc = new SparkContext(spark_conf)
 
-  val spark_session = SparkSession.builder()
-    .config(spark_conf)
-    .enableHiveSupport()
-    .getOrCreate()
 
-  //CSV file on hdfs
+val spark_session = SparkSession.builder()
+  .config(spark_conf)
+  .enableHiveSupport()
+  .getOrCreate()
 
-  val hdfs_file_location="hdfs://localhost:9000/user/pays/pays_topic_bis-1008310031.csv"
+//CSV file on hdfs
+
+val hdfs_file_location="hdfs://localhost:9000/user/pays/pays_topic_bis-1004628500.csv"
+  def readFromHDFS(file_location: String, spark_session: SparkSession):DataFrame ={
+
+    val username_df = spark_session.read.format("csv")
+      .option("delimiter",";")
+      .option("header","true")
+      .option("inferShema","true")
+      .load(file_location)
+
+  username_df
+}
+
+  def writeToHiveTable(hdfsPath: String, hiveTable: String): Unit = {
+    val spark = SparkSession.builder().enableHiveSupport().getOrCreate()
+    val df = spark.read.option("header", "true").option("delimiter",";").option("inferShema","true").csv(hdfsPath)
+    df.write.mode(SaveMode.Overwrite).saveAsTable(hiveTable)
+  }
 
   //reading
-  val username_df=readFromHDFS(hdfs_file_location,spark_session)
+  val username_df = readFromHDFS(hdfs_file_location, spark_session)
   username_df.printSchema()
   username_df.collect.foreach(println)
 
-  def readFromHDFS(file_location: String, spark_session: SparkSession):DataFrame ={
-
-      val username_df = spark_session.read.format("csv")
-        .option("delimiter",";")
-        .option("header","true")
-        .option("inferShema","true")
-        .load(file_location)
-
-    username_df
-  }
-
-
-  spark_session.sql("CREATE DATABASE Hive_test")
-  //spark_session.sql("show databases").show()
-
-  // Hive End
+  spark_session.sql("CREATE DATABASE if not exists Hive_test")
+  spark_session.sql("show databases").show()
+  spark_session.sql("use Hive_test")
+  spark_session.sql(
+    """CREATE TABLE if not exists param_pays(
+      pays string)
+      """)
+  spark_session.sql("Show tables")
+  writeToHiveTable(hdfs_file_location,"param_pays")
+// Hive End
 
 
+println("| Key | Message ")
+while (true) {
+  val polledRecords: ConsumerRecords[String, String] = consumer.poll(Duration.ofSeconds(1))
+  if (!polledRecords.isEmpty) {
+    println(s"Polled ${polledRecords.count()} records")
+    val recordIterator = polledRecords.iterator()
+    while (recordIterator.hasNext) {
+      val record: ConsumerRecord[String, String] = recordIterator.next()
+      //val csvTrip = record.value()
+      //println(s"| ${record.key()} | ${record.value()} | ${record.partition()} | ${record.offset()} |")
+      //println(s"| ${record.key()} | ${record.value()} |")
+      //println(csvTrip)
 
-  println("| Key | Message ")
-  while (true) {
-    val polledRecords: ConsumerRecords[String, String] = consumer.poll(Duration.ofSeconds(1))
-    if (!polledRecords.isEmpty) {
-      println(s"Polled ${polledRecords.count()} records")
-      val recordIterator = polledRecords.iterator()
-      while (recordIterator.hasNext) {
-        val record: ConsumerRecord[String, String] = recordIterator.next()
-        //val csvTrip = record.value()
-        //println(s"| ${record.key()} | ${record.value()} | ${record.partition()} | ${record.offset()} |")
-        //println(s"| ${record.key()} | ${record.value()} |")
-        //println(csvTrip)
+      // Write each record to HDFS
+      val path = new Path("/user/pays/"+topicName + record.key() + ".csv")
+      val outputStream = hdfs.create(path)
+      outputStream.write(record.value().getBytes)
+      outputStream.close()
 
-        // Write each record to HDFS
-        val path = new Path("/user/pays/"+topicName + record.key() + ".csv")
-        val outputStream = hdfs.create(path)
-        outputStream.write(record.value().getBytes)
-        outputStream.close()
-
-      }
     }
   }
+}
 
 
 

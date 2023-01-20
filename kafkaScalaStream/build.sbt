@@ -37,6 +37,7 @@ libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.30"
 libraryDependencies += "org.apache.spark" %% "spark-avro" % "3.2.2"
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.30"
-
-libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.13.3"
+/*
+libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.19.0"
 libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.13.3"
+*/
