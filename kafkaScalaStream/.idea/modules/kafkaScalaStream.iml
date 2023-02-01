@@ -21,6 +21,7 @@
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.module:jackson-module-scala_2.13:2.13.4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.joshelser:dropwizard-metrics-hadoop-metrics2-reporter:0.1.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.luben:zstd-jni:1.5.2-1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.virtuald:curvesapi:1.06:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.code.findbugs:jsr305:3.0.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.code.gson:gson:2.8.6:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.crypto.tink:tink:1.6.1:jar" level="project" />
@@ -35,6 +36,7 @@
     <orderEntry type="library" name="sbt: com.twitter:chill_2.13:0.10.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.univocity:univocity-parsers:2.9.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.zaxxer:HikariCP:2.5.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.zaxxer:SparseBitSet:1.2:jar" level="project" />
     <orderEntry type="library" name="sbt: commons-cli:commons-cli:1.2:jar" level="project" />
     <orderEntry type="library" name="sbt: commons-codec:commons-codec:1.15:jar" level="project" />
     <orderEntry type="library" name="sbt: commons-collections:commons-collections:3.2.2:jar" level="project" />
@@ -133,6 +135,9 @@
     <orderEntry type="library" name="sbt: org.apache.parquet:parquet-format-structures:1.12.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.parquet:parquet-hadoop:1.12.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.parquet:parquet-jackson:1.12.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.poi:poi-ooxml-schemas:4.1.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.poi:poi-ooxml:4.1.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.poi:poi:4.1.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-avro_2.13:3.2.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-catalyst_2.13:3.3.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-core_2.13:3.3.1:jar" level="project" />
@@ -152,6 +157,7 @@
     <orderEntry type="library" name="sbt: org.apache.velocity:velocity:1.5:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.ws.xmlschema:xmlschema-core:2.3.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.xbean:xbean-asm9-shaded:4.20:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.xmlbeans:xmlbeans:3.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.yetus:audience-annotations:0.12.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.zookeeper:zookeeper-jute:3.6.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.zookeeper:zookeeper:3.6.2:jar" level="project" />
